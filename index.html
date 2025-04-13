@@ -56,16 +56,41 @@
     document.getElementById("formulario").addEventListener("submit", function(e) {
       e.preventDefault();
 
+      const nombre = document.getElementById("nombre").value;
+      const email = document.getElementById("email").value;
+      const ciudad = document.getElementById("ciudad").value;
+      const celular = document.getElementById("celular").value;
+
+      // Enviar al dataLayer para GTM
       dataLayer.push({
         event: "form_submit",
         form_name: "Formulario de contacto",
-        user_name: document.getElementById("nombre").value,
-        user_email: document.getElementById("email").value,
-        user_city: document.getElementById("ciudad").value,
-        user_phone: document.getElementById("celular").value
+        user_name: nombre,
+        user_email: email,
+        user_city: ciudad,
+        user_phone: celular
       });
 
-      alert("¡Formulario enviado (simulado)!");
+      // Enviar a Google Sheets vía webhook
+      fetch("https://script.google.com/macros/s/AKfycbwZBf5JmsHRcLwfj4pX8j55bZXN3Qo4JdYuJT28hMvxoU0tDMXNbnlSLymW8b8ZiHjFXQ/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          user_name: nombre,
+          user_email: email,
+          user_city: ciudad,
+          user_phone: celular
+        })
+      })
+      .then(res => res.json())
+      .then(response => {
+        alert("¡Formulario enviado y datos enviados a Google Sheets!");
+      })
+      .catch(error => {
+        console.error("Error al enviar a Google Sheets:", error);
+      });
     });
   </script>
 </body>
