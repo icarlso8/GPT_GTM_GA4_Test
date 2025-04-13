@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,38 +12,33 @@
   })(window,document,'script','dataLayer','GTM-NBN977V2');</script>
   <!-- End Google Tag Manager -->
 </head>
-  
 <body>
   <!-- Aquí va el código del BODY de GTM -->
-  <!-- Google Tag Manager (noscript) -->
+<!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBN977V2"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
-  <h1>Bienvenido al entorno de práctica de GTM</h1>
-  <p>Haz clic en un botón para simular una conversión:</p>
-
-  <button id="contacto">Contáctanos</button>
-  <button id="descarga" class="btn-descarga">Descargar Brochure</button>
+<h1>Bienvenido al entorno de práctica de GTM</h1>
+  <p>Haz clic en un botón para simular una conversión:</p><button id="contacto">Contáctanos</button> <button id="descarga" class="btn-descarga">Descargar Brochure</button>
 
   <h2>Formulario de contacto (simulado)</h2>
-  <form id="formulario" action="https://formsubmit.co/ic8suarezo@gmail.com" method="POST">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required><br><br>
+  <form id="formulario" action="https://formsubmit.co/TUCORREO@gmail.com" method="POST">
+    <input type="hidden" name="_next" value="https://icarlso8.github.io/GPT_GTM_GA4_Test/thanks.html">
+    <input type="hidden" name="_captcha" value="false"><label for="nombre">Nombre:</label>
+<input type="text" id="nombre" name="user_name" required><br><br>
 
-    <label for="email">Correo:</label>
-    <input type="email" id="email" name="email" required><br><br>
+<label for="email">Correo:</label>
+<input type="email" id="email" name="user_email" required><br><br>
 
-    <label for="ciudad">Ciudad:</label>
-    <input type="text" id="ciudad" name="ciudad" required><br><br>
+<label for="ciudad">Ciudad:</label>
+<input type="text" id="ciudad" name="user_city" required><br><br>
 
-    <label for="celular">Número de contacto:</label>
-    <input type="tel" id="celular" name="celular" required><br><br>
+<label for="celular">Número de contacto:</label>
+<input type="tel" id="celular" name="user_phone" required><br><br>
 
-    <button type="submit">Enviar</button>
-  </form>
+<button type="submit">Enviar</button>
 
-  <script>
+  </form>  <script>
     document.getElementById("contacto").addEventListener("click", () => {
       console.log("¡Clic en el botón Contáctanos!");
     });
@@ -54,45 +48,14 @@
     });
 
     document.getElementById("formulario").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const nombre = document.getElementById("nombre").value;
-      const email = document.getElementById("email").value;
-      const ciudad = document.getElementById("ciudad").value;
-      const celular = document.getElementById("celular").value;
-
-      // Enviar al dataLayer para GTM
       dataLayer.push({
         event: "form_submit",
         form_name: "Formulario de contacto",
-        user_name: nombre,
-        user_email: email,
-        user_city: ciudad,
-        user_phone: celular
-      });
-
-      // Enviar a Google Sheets vía webhook
-      // fetch("https://script.google.com/macros/s/AKfycbyF3GxQVROTYkyTt4Bc4Sj2o5S4QWHtrV2EmB_MXsQrYNX86_PT6qY2nX2FrN6GBLuLug/exec", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          user_name: nombre,
-          user_email: email,
-          user_city: ciudad,
-          user_phone: celular
-        })
-      })
-      .then(res => res.json())
-      .then(response => {
-        console.log("Respuesta del webhook:", response);
-        alert("¡Formulario enviado y datos enviados a Google Sheets!");
-      })
-      .catch(error => {
-        console.error("Error al enviar a Google Sheets:", error);
+        user_name: document.getElementById("nombre").value,
+        user_email: document.getElementById("email").value,
+        user_city: document.getElementById("ciudad").value,
+        user_phone: document.getElementById("celular").value
       });
     });
-  </script>
-</body>
+  </script></body>
 </html>
