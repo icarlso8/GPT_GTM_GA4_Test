@@ -28,7 +28,7 @@
   <button id="descarga" class="btn-descarga">Descargar Brochure</button>
 
   <h2>Formulario de contacto (simulado)</h2>
-  <form id="formulario">
+  <form id="formulario" action="https://formsubmit.co/ic8suarezo@gmail.com" method="POST">
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" name="nombre" required><br><br>
 
@@ -72,7 +72,7 @@
       });
 
       // Enviar a Google Sheets vía webhook
-      fetch("https://script.google.com/macros/s/AKfycbyF3GxQVROTYkyTt4Bc4Sj2o5S4QWHtrV2EmB_MXsQrYNX86_PT6qY2nX2FrN6GBLuLug/exec", {
+      // fetch("https://script.google.com/macros/s/AKfycbyF3GxQVROTYkyTt4Bc4Sj2o5S4QWHtrV2EmB_MXsQrYNX86_PT6qY2nX2FrN6GBLuLug/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
